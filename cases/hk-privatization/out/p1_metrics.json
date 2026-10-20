@@ -1,0 +1,57 @@
+{
+ "2800": {
+  "CAGR": 0.0315,
+  "MDD": -0.4939,
+  "Calmar": 0.064
+ },
+ "P1_X0_neutral_30bp": {
+  "CAGR": 0.0364,
+  "MDD": -0.1146,
+  "Calmar": 0.318
+ },
+ "P1_X0_neutral_real": {
+  "CAGR": 0.0428,
+  "MDD": -0.1113,
+  "Calmar": 0.385
+ },
+ "P1_X0_zero_30bp": {
+  "CAGR": 0.0354,
+  "MDD": -0.1044,
+  "Calmar": 0.339
+ },
+ "P1_X0_zero_real": {
+  "CAGR": 0.0418,
+  "MDD": -0.1016,
+  "Calmar": 0.411
+ },
+ "P1_X0_obsmix_30bp": {
+  "CAGR": 0.0601,
+  "MDD": -0.0975,
+  "Calmar": 0.616
+ },
+ "P1_X0_obsmix_real": {
+  "CAGR": 0.0667,
+  "MDD": -0.0951,
+  "Calmar": 0.701
+ },
+ "P1_X0_pricedonly_30bp": {
+  "CAGR": 0.0501,
+  "MDD": -0.1065,
+  "Calmar": 0.471
+ },
+ "P1_X5_LOOKAHEAD_neutral_30bp": {
+  "CAGR": 0.0619,
+  "MDD": -0.1044,
+  "Calmar": 0.593
+ },
+ "P1_X0_neutral_30bp_slot25": {
+  "CAGR": 0.0805,
+  "MDD": -0.1255,
+  "Calmar": 0.641
+ },
+ "P1_X0_neutral_30bp_dropbest3events": {
+  "CAGR": 0.0269,
+  "MDD": -0.1143,
+  "Calmar": 0.235
+ }
+}

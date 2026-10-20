@@ -117,6 +117,28 @@ def buffett_paths() -> dict:
     }
 
 
+def hk_paths() -> dict:
+    """HK privatization case. Large caches stay under data/ (gitignored)."""
+    case = _case("hk-privatization")
+    cache = DATA / "hk_privatization"
+    return {
+        "case": case,
+        "out": case / "out",
+        "ref": case / "ref",
+        "cache": cache,
+        "hkex_titles": cache / "hkex_titles",
+        "hkex_titles_inactive": cache / "hkex_titles_inactive",
+        "inactive": cache / "inactive_stocks.jsonl",
+        "px_sina": cache / "px_sina",
+        "px_2800": cache / "px_2800.csv",
+        "px_hsi": cache / "px_HSI.csv",
+        "webb": case / "ref" / "webb_privatised_2000_2025.csv",
+        "failed": case / "ref" / "failed_listed_targets.csv",
+        "titles_filtered": cache / "titles_filtered.pkl",
+        "listed_episodes": cache / "listed_episodes.pkl",
+    }
+
+
 def schloss_paths() -> dict:
     case = _case("schloss")
     cache = DATA / "schloss"

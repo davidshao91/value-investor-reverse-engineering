@@ -35,12 +35,15 @@
 | [格林布拉特：分拆](cases/greenblatt/) | **数据 blocker** | 免费行情只覆盖大约一半已完成的分拆。被收购或退市的那一批正好缺失，真伪现在测不了。 |
 | [巴菲特合伙年代：便宜，并且有催化剂（2009 年起）](cases/buffett/) | **放弃** | 把后来退市的公司加回宇宙之后，篮子能组出来，但跑输标普，也跑输「同样便宜、却没有回购催化剂」的对照。 |
 | [施洛斯：跌落的蓝筹（M2 / M3 / M4）](cases/schloss/) | **放弃** | 买跌到多年低点的标普成分，2000–2026 年化约 6.5%、最深跌约 61%，不如直接持有标普。分批买、换一种卖法，都救不了这条规则。用市净率再滤一遍时，财报覆盖不够，那一档记为数据 blocker。 |
+| [港股私有化：公告后买入；净现金加高控股](cases/hk-privatization/) | **数据 blocker** | 两条都测不了。宣布后买入、持有到完成：2008 年以后只有 58% 的完成案有价格，2001–2014 年是 0%，因为号码被新公司复用后，免费行情只剩新公司。净现金加高控股：没有退市公司的时点财务和控股比例。2019 年以后的诊断也没有过线。附带统计只供诊断：完成率大约 88%–90%，完成的中位收益 +8.3%（约 124 天），失败的中位 −21.5%。 |
 
-每个案例目录里，先是白话结论，然后是做法、数字和局限。回测脚本在 `code/`，小结果表在 `out/`。原始行情和申报缓存没有放进仓库，要重跑请看 [docs/data.md](docs/data.md)。
+六套规则的阶段结论在 [docs/batch-1-summary.md](docs/batch-1-summary.md)：没有一套在锁定及格线下打败基准。每个案例目录里，先是白话结论，然后是做法、数字和局限。回测脚本在 `code/`，小结果表在 `out/`。原始行情和申报缓存没有放进仓库，要重跑请看 [docs/data.md](docs/data.md)。
 
 ## 仓库里还有什么
 
 - [案例索引](cases/README.md)
+- [第一批收口](docs/batch-1-summary.md)
+- [动手之前锁定的范围](docs/plan.md)
 - [要自己抓哪些数据](docs/data.md)
 - [用 EDGAR 表格类型做事件表](docs/edgar-form-event-table.md)（第一批里可复用的做法）
 - [公开什么、不公开什么](docs/BUILD_IN_PUBLIC.md)
@@ -49,7 +52,7 @@
 
 This repo turns what famous value investors said and did into rules that can fail a test. The pass bar is written down before any backtest (preregistration: lock the scoreboard first). Then we run the rule on free data — SEC EDGAR filings plus free prices — and publish one verdict: abandon, forward-watch, memo-gate, or data blocker.
 
-Batch 1, in one line each: Lynch-style PEG on trailing earnings growth — abandon (past profit growth did not predict future profit growth; Magellan’s edge was not this formula). Greenblatt cash merger arbitrage from 2009, built from SEC merger proxies — abandon (the spread is real, the portfolio sits in cash). Greenblatt spin-offs — data blocker (free prices cover about half the completed deals). Buffett partnership-era “cheap plus a catalyst” from 2009 — abandon (it lost to the S&P and to the same cheap basket with no catalyst). Schloss-style fallen S&P blue chips — abandon (buying multi-year lows lost to the S&P; the price-to-book version is a data blocker).
+Batch 1, in one line each: Lynch-style PEG on trailing earnings growth — abandon (past profit growth did not predict future profit growth; Magellan’s edge was not this formula). Greenblatt cash merger arbitrage from 2009, built from SEC merger proxies — abandon (the spread is real, the portfolio sits in cash). Greenblatt spin-offs — data blocker (free prices cover about half the completed deals). Buffett partnership-era “cheap plus a catalyst” from 2009 — abandon (it lost to the S&P and to the same cheap basket with no catalyst). Schloss-style fallen S&P blue chips — abandon (buying multi-year lows lost to the S&P; the price-to-book version is a data blocker). HK privatizations — data blocker for both “buy after the announcement” and “does net cash plus a high controller stake predict a bid”. From 2008 only 58% of completed deals still have prices, and 2001–2014 is 0%, because a reused ticker wipes the old history from free feeds. The HKEX headline search does not return delisted issuers. A 2019+ diagnostic also misses the bar. The per-deal medians (about +8.3% if completed, −21.5% if it fails) are a diagnostic, not a passed rule. None of the six rule-sets beat the locked bar. See `docs/batch-1-summary.md`.
 
 **Calmar** = annualized return divided by the absolute value of the worst peak-to-trough loss. The public benchmarks are SPY and an equal-weight S&P. A private conservative portfolio used as an extra benchmark is not published. Research only, not investment advice.
 

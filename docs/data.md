@@ -18,7 +18,7 @@ export EDGAR_USER_AGENT="Your Name you@domain.com"
 |---|---|
 | `data/benchmarks/spy_daily.csv` | 列：`date`, `adj_close`。SPY 全收益日净值。没有这个文件时，指标脚本会试着用 yfinance 现拉。 |
 | `data/spx/hist.csv` | 标普 500 时点成分。列：`date`, `tickers`（逗号分隔）。来源可以是公开的历史成分表（本批用的是 fja05680 那份日度快照）。 |
-| `data/private/author_benchmark.csv` | **可选，不要提交。** 列：`date`, `nav`。作者自己的保守基准组合。不提供这个文件时，脚本只和 SPY（以及案例里自己算的标普等权）比较。 |
+| `data/private/author_benchmark.csv` | **可选，不要提交。** 列：`date`, `nav`。作者自己的保守基准组合。不提供这个文件时，脚本只和公开基准比较：美股案例对 SPY（以及案例里自己算的标普等权），港股私有化案例对 2800.HK。脚本不会把这个文件的净值写回 `out/`。 |
 
 ## 财务与行情（林奇、巴菲特，以及施洛斯的市净率档）
 
@@ -53,3 +53,19 @@ export EDGAR_USER_AGENT="Your Name you@domain.com"
 `s01`–`s03` 会在 `data/schloss/` 里生成 `px.pkl`, `members_me.pkl`, `feat.pkl`。这些是中间缓存，不进 git。
 
 价格拼接时排除了四个已知对不上的代码：`PBG`, `SLR`, `CBE`, `FBF`。这是行情审计里的坏序列，不是一份持仓名单。
+
+## 港股私有化
+
+公开基准是盈富基金 2800.HK。小名单已经放在案例目录里，行情缓存不要提交。
+
+| 路径 | 内容 |
+|---|---|
+| `cases/hk-privatization/ref/webb_privatised_2000_2025.csv` | Webb-site（CC-BY 4.0，Renavon 镜像）私有化除牌名单的手工转录，2001 年至 2025 年上半年，246 行。 |
+| `cases/hk-privatization/ref/failed_listed_targets.csv` | 从仍上市目标的标题里整理出的失败或失效案例。已退市发行人的公告不在港交所默认检索里。 |
+| `data/hk_privatization/hkex_titles/` | `h01_titles.py` 按月存的标题 JSON。 |
+| `data/hk_privatization/hkex_titles_inactive/` | `h01b_titles_inactive.py`。把检索类别改成非活跃发行人，仍然补不出已退市公告的档案。 |
+| `data/hk_privatization/px_sina/{代码}.csv` | 未复权日线，列至少要有 `date`, `close`。`h03_px.py` 用 akshare 下载，需要另装 `akshare`。号码被新公司占用时，文件里只有新公司的历史。 |
+| `data/hk_privatization/px_2800.csv` | 2800.HK。列里要有 `Date` 和 `Adj Close`，或把日期放在索引里。 |
+| `data/hk_privatization/px_HSI.csv` | 可选。只有 2800 的文件缺失、改用恒生指数价格指数时才需要，并且要在结论里写明不含股息。 |
+
+`h04_cov.py` 只依赖 Webb 名单和 `px_sina`。`h07_bt.py` 还需要已经放进仓库的 `out/event_table.csv` 和 `px_2800.csv`。标题 JSON、中间 pickle 都不进 git。
