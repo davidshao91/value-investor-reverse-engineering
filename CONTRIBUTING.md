@@ -1,6 +1,6 @@
-# Contributing
+# 参与
 
-1. Open an issue naming the manager/case and the falsifiable rule draft.
-2. Land a **preregistration** PR (rules + pass bars) **before** any results PR.
-3. Abandon / fail PRs are welcome and counted as progress.
-4. Do not commit personal financial information.
+1. 开一个 issue，写明大师或案例，以及准备检验的规则。
+2. 先提交一份预注册：规则和及格线。这份合并之后，再提交带结果的改动。
+3. 放弃、失败、数据不够，都算进展。
+4. 不要提交个人财务信息。作者自己的基准组合若要在本地对照，放在 `data/private/`，不要推进仓库。
