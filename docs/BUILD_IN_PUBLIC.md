@@ -1,7 +1,7 @@
-# Build-in-public policy
+# 公开什么
 
-Default: public (preregs, code, metrics, abandons, blockers).
+默认公开：预注册的规则和及格线、回测脚本、指标、失败、数据缺口。
 
-Never public: personal brokerage IDs, account balances, exact personal portfolio weights, live “I will buy tomorrow” order intent.
+不公开：作者自己的保守基准组合的成分、账户、券商、持仓数量和金额、收入。这个组合可以当作可选对照，文件放在本机 `data/private/`，不进仓库。公开对照是 SPY 和标普成分等权。
 
-Review before sharing anything that could identify private holdings beyond what 13F already discloses for others.
+研究结论不是买卖指令。
